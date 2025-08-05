@@ -1,7 +1,7 @@
-# AI Coding Manifesto
+# Vibe Coding Manifesto
 
-This repository hosts the **AI Coding Manifesto** - a set of principles for ethical and effective human-AI collaboration in software development.
-The AI Coding Manifesto establishes guidelines for transparency, accountability, and human agency while harnessing AI's capabilities to enhance productivity and code quality in software development.
+This repository hosts the Vibe Coding Manifesto (i.e., Coding with AI) ** - a set of principles for ethical and effective human-AI collaboration in software development.
+The Vibe Coding Manifesto establishes guidelines for transparency, accountability, and human agency while harnessing AI's capabilities to enhance productivity and code quality in software development.
 
 Live website: [ai-coding-manifesto.github.io](https://ai-coding-manifesto.github.io)
 

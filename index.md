@@ -1,6 +1,6 @@
 ---
 layout: default
-title: AI Coding Manifesto
+title: Vibe Coding Manifesto
 description: Best Practices for AI-Assisted Contributions in Open Source
 ---
 
