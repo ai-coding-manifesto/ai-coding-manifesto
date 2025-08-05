@@ -38,7 +38,7 @@ The following guidelines aim to help contributors use AI responsibly in OS proje
   In agile terms, *WIP limits improve throughput by reducing the amount of work "nearly done" and forcing focus on a smaller set of tasks* This technique helps avoid "PR spam".
   PR spam is not only noisy and annoying for the limited number of reviewers but also encourages contributors to *finish* and polish one change before moving on to the next.
 * **Add an AI attribution Declaration**: Add an attribution to AI-generated content in your PR and commit comments.
-  The [AI Attribution Toolkit](https://aiattribution.github.io/) has a good proosal that results in detailed attribution lines like [AIA PAI Nc Hin R o3 v1.0](https://aiattribution.github.io/interpret-attribution).
+  The [AI Attribution Toolkit](https://aiattribution.github.io/) has a good proosal that results in detailed attribution lines like [AIA PAI Nc Hin R o3 v1.0](https://aiattribution.github.io/statements/AIA-PAI-Nc-Hin-R-?model=o3-v10).
   Use the tooling on https://aiattribution.github.io to create the attribution line.
 * **Assume AI assistance and openly share prompting techniques**: These days, it's safe to assume AI assistance is the norm rather than the exception.
   Contributors and reviewers are encouraged to share and discuss their prompting techniques openly.
