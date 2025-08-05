@@ -1,0 +1,18 @@
+title: AI Coding Manifesto
+description: Best Practices for AI-Assisted Contributions in Open Source
+url: "https://ai-coding-manifesto.github.io"
+baseurl: "/ai-coding-manifesto"
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - LICENSE
