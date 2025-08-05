@@ -1,0 +1,33 @@
+/* Additional Jekyll-specific styles for markdown content */
+
+/* Style markdown-generated content to match our design */
+.principle-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure markdown headers get proper IDs for navigation */
+h2[id],
+h3[id] {
+    scroll-margin-top: 2rem;
+}
+
+/* Style for markdown-generated lists */
+.container main ul li {
+    margin-bottom: 0.5rem;
+}
+
+.container main ol li {
+    margin-bottom: 0.5rem;
+}
+
+/* Style markdown links */
+.container main a:not(.quick-nav a) {
+    color: var(--accent-color);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.container main a:not(.quick-nav a):hover {
+    border-bottom-color: var(--accent-color);
+    text-decoration: none;
+}
