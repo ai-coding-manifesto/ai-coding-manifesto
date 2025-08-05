@@ -1,7 +1,3 @@
-# Vibe Coding Manifesto 
-
-### Best Practices for AI-Assisted Contributions in Open Source
-
 # Introduction
 
 The rise of AI coding assistants has shifted the balance of effort in software development.
