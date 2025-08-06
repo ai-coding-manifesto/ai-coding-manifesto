@@ -7,6 +7,9 @@
     <title>{{ page.title | default: site.title }} - {{ site.description }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}">
 
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQQoyeyJOyOTLUQy_J6NXHJ2QCAr0.woff2" type="font/woff2" crossorigin>
+
     <style>
         :root {
             --primary-color: #5f4d93;
@@ -29,8 +32,6 @@
         }
 
         body {
-            font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 'SimSun', 'Droid Sans Fallback', sans-serif;
-            font-size: 14px;
             font-size-adjust: 0.5;
             line-height: 1.7;
             color: var(--text-color);
@@ -192,7 +193,6 @@
         p {
             margin-bottom: 1.2rem;
             color: var(--text-color);
-            font-size: 15px;
             line-height: 1.7;
         }
 
@@ -237,7 +237,6 @@
             background: var(--code-bg);
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
-            font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
             font-size: 0.75rem;
             font-size-adjust: 0.5;
             color: var(--accent-color);
@@ -250,7 +249,6 @@
             padding: 1rem;
             margin: 1rem 0;
             overflow-x: auto;
-            font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
             font-size: 0.75rem;
             font-size-adjust: 0.5;
         }
@@ -270,7 +268,6 @@
 
         li {
             margin-bottom: 0.6rem;
-            font-size: 15px;
             line-height: 1.6;
         }
 
@@ -344,7 +341,6 @@
 
         .rules-list li p {
             margin: 0;
-            font-size: 15px;
             line-height: 1.6;
             color: var(--text-color);
         }
@@ -475,7 +471,7 @@
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             body {
-                font-size: 15px;
+
             }
 
             h1 {
@@ -504,13 +500,6 @@
                 margin: 3rem 0;
             }
 
-            p {
-                font-size: 14px;
-            }
-
-            li {
-                font-size: 14px;
-            }
         }
     </style>
 </head>
@@ -529,17 +518,17 @@
                     <a href="#rules-for-ai-assisted-pr-submissions">Rules for PRs</a>
                     <a href="#project-automation-for-the-ai-codingreview-workflow">Project Automation</a>
 		    <a href="https://github.com/ai-coding-manifesto/ai-coding-manifesto" target="_blank" class="github-btn">
-    			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" 
+    			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
          		style="vertical-align:middle; margin-right:6px;">
         		    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56
         		    0-.28-.01-1.03-.02-2.02-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7
-        		    -1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 
+        		    -1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27
         		    3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72
-        		    0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.45.11-3.02 0 0 
-        		    .97-.31 3.18 1.18a11.07 11.07 0 0 1 5.79 0c2.21-1.49 
-        		    3.18-1.18 3.18-1.18.63 1.57.23 2.73.11 3.02.74.8 1.19 
-        		    1.83 1.19 3.09 0 4.45-2.68 5.43-5.24 5.72.42.36.79 1.08.79 
-        		    2.18 0 1.57-.01 2.83-.01 3.22 0 .31.21.68.8.56A10.999 
+        		    0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.45.11-3.02 0 0
+        		    .97-.31 3.18 1.18a11.07 11.07 0 0 1 5.79 0c2.21-1.49
+        		    3.18-1.18 3.18-1.18.63 1.57.23 2.73.11 3.02.74.8 1.19
+        		    1.83 1.19 3.09 0 4.45-2.68 5.43-5.24 5.72.42.36.79 1.08.79
+        		    2.18 0 1.57-.01 2.83-.01 3.22 0 .31.21.68.8.56A10.999
         		    10.999 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
     			</svg>Contribute
 		    </a>
