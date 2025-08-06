@@ -1,0 +1,42 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..700&display=swap");
+
+/* Set CSS custom properties */
+:root {
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Space Grotesk", var(--font-body);
+  --font-code: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Apply typography */
+html {
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 18px;
+    font-size-adjust: 0.5;
+}
+
+body {
+    font-size: 18px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+pre, code, kbd, samp {
+    font-family: var(--font-code);
+    font-size: 0.95em;
+}
+
+/* Optional: optical balance */
+h1 {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+}
+
+h2 {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
