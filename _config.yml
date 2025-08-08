@@ -1,6 +1,6 @@
-title: Vibe Coding Manifesto
+title: Responsible Vibe Coding
 description: Best Practices for AI-Assisted Contributions in Open Source
-url: "https://ai-coding-manifesto.github.io"
+url: "https://rvc-guide.github.io"
 baseurl: ""
 
 markdown: kramdown
