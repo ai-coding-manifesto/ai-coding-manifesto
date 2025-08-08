@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Vibe Coding Manifesto
+title: Responsible Vibe Coding
 description: Best Practices for AI-Assisted Contributions in Open Source
 ---
 
-{% capture manifesto %}{% include_relative AI_MANIFESTO.md %}{% endcapture %}
-{% assign cleaned_content = manifesto | remove: '# AI Coding Manifesto' | remove: '### Best Practices for AI-Assisted Contributions in Open Source' %}
-{{ cleaned_content | markdownify }}
+{% capture rvc %}{% include_relative RESPONSIBLE_VIBE_CODING.md %}{% endcapture %}
+{{ rvc | markdownify }}
