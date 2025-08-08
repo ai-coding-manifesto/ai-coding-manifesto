@@ -3,9 +3,9 @@
 
 /* Set CSS custom properties */
 :root {
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-heading: "Space Grotesk", var(--font-body);
-  --font-code: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-heading: "Space Grotesk", var(--font-body);
+    --font-code: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 /* Apply typography */
@@ -15,19 +15,26 @@ html {
     line-height: 1.55;
     font-size: 18px;
     font-size-adjust: 0.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
     font-size: 18px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: var(--font-heading);
     font-weight: 600;
     letter-spacing: -0.01em;
 }
 
-pre, code, kbd, samp {
+pre,
+code,
+kbd,
+samp {
     font-family: var(--font-code);
     font-size: 0.95em;
 }

@@ -6,23 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }} - {{ site.description }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="theme-color" content="#5f4d93" />
 
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQQoyeyJOyOTLUQy_J6NXHJ2QCAr0.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font"
+        href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQQoyeyJOyOTLUQy_J6NXHJ2QCAr0.woff2" type="font/woff2"
+        crossorigin>
 
     <style>
         :root {
+            /* Brand palette */
             --primary-color: #5f4d93;
             --secondary-color: #6b5b95;
             --accent-color: #e37682;
-            --text-color: #2d3748;
-            --text-light: #4a5568;
-            --background: #75567f;
-            --surface: #f7fafc;
-            --surface-light: #edf2f7;
-            --code-bg: #f1f5f9;
-            --border-color: #e2e8f0;
+
+            /* Text & surfaces */
+            --text-color: #1f2937;
+            /* slate-800 */
+            --text-light: #4b5563;
+            /* slate-600 */
+            --background: #f3f4f6;
+            /* slate-100 */
+            --surface: #ffffff;
+            /* white */
+            --surface-light: #f8fafc;
+            /* slate-50 */
+            --code-bg: #f5f7fb;
+            /* very light indigo */
+            --border-color: #e5e7eb;
+            /* slate-200 */
             --highlight-bg: #fff5f5;
+
+            /* FX */
+            --ring-color: rgba(95, 77, 147, 0.2);
+            --shadow-color: 0, 0, 0;
         }
 
         * {
@@ -35,19 +52,23 @@
             font-size-adjust: 0.5;
             line-height: 1.7;
             color: var(--text-color);
-            background: linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
+            /* Layered, soft gradient background */
+            background:
+                radial-gradient(1200px 600px at 70% -10%, rgba(140, 201, 240, 0.18), transparent 60%),
+                radial-gradient(900px 500px at -10% 10%, rgba(239, 168, 176, 0.25), transparent 55%),
+                linear-gradient(45deg, #fbe8ea 0%, #ece8f6 50%, #e9f4fc 100%);
         }
 
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
+            max-width: 920px;
+            margin: 3rem auto;
             padding: 0;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 0.35em;
-            box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25), 0 8px 32px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: none;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .content-wrapper {
@@ -56,18 +77,21 @@
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
+            margin-bottom: 2rem;
+            padding: 2.5rem 0 1.5rem;
         }
 
-        h1 {
-            font-size: 2.5rem;
+        header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
             font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            line-height: 1.12;
             letter-spacing: -0.02em;
             position: relative;
+            background: linear-gradient(90deg, #5f4d93 0%, #e37682 50%, #5f4d93 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
 
@@ -75,9 +99,79 @@
         .subtitle {
             font-size: 1.1rem;
             color: var(--text-light);
-            margin-bottom: 2rem;
+            margin-bottom: 1.75rem;
             font-weight: 400;
             line-height: 1.5;
+        }
+
+        /* Minimal theme toggle icons */
+        .theme-toggle-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .theme-toggle-icons button {
+            appearance: none;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-light);
+            padding: 0.25rem;
+            border-radius: 6px;
+            cursor: pointer;
+            line-height: 0;
+            transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .theme-toggle-icons button:hover {
+            color: var(--text-color);
+            background: var(--surface-light);
+            border-color: var(--border-color);
+        }
+
+        .theme-toggle-icons button[aria-pressed="true"] {
+            color: var(--primary-color);
+            background: var(--surface-light);
+            border-color: var(--border-color);
+        }
+
+        .theme-toggle-icons svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .theme-toggle .toggle-btn {
+            appearance: none;
+            border: 1px solid var(--border-color);
+            background: var(--surface);
+            color: var(--text-color);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.95rem;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+            box-shadow: none;
+        }
+
+        .theme-toggle .toggle-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .theme-toggle .toggle-btn[aria-pressed="true"] {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #ffffff;
         }
 
         .quick-nav {
@@ -94,33 +188,36 @@
             font-weight: 400;
             padding: 0.5rem 1rem;
             border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
+            border-radius: 999px;
             transition: all 0.2s ease;
             background: var(--surface);
+            box-shadow: none;
         }
 
         .quick-nav a:hover {
-            background: #5f4d93 !important;
-            color: #ffffff !important;
-            border-color: #5f4d93 !important;
+            /* Keep appearance stable on hover */
+            background: var(--surface);
+            color: var(--primary-color);
+            border-color: var(--border-color);
+            text-decoration: none;
         }
 
         /* Extra specific selector to ensure white color on navigation hover */
         header .quick-nav a:hover {
-            color: #ffffff !important;
+            color: var(--primary-color);
         }
 
         .contribute-btn {
             border-color: var(--primary-color);
             font-weight: 600;
+            box-shadow: none;
         }
 
         .contribute-btn:hover {
             background: var(--primary-color) !important;
             color: white !important;
             border-color: var(--primary-color) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            box-shadow: none;
         }
 
         section {
@@ -199,11 +296,11 @@
         .principle-box {
             background: var(--surface);
             border: 1px solid var(--border-color);
-            border-radius: 0.35rem;
+            border-radius: 0.75rem;
             padding: 1.75rem;
             margin: 2rem 0;
             border-left: 4px solid var(--primary-color);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: none;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -221,7 +318,7 @@
 
         .principle-box:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+            box-shadow: none;
             border-color: var(--primary-color);
         }
 
@@ -237,7 +334,7 @@
             background: var(--code-bg);
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-size-adjust: 0.5;
             color: var(--accent-color);
         }
@@ -246,10 +343,10 @@
             background: var(--code-bg);
             border: 1px solid var(--border-color);
             border-radius: 0.5rem;
-            padding: 1rem;
+            padding: 1.1rem 1.25rem;
             margin: 1rem 0;
             overflow-x: auto;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-size-adjust: 0.5;
         }
 
@@ -291,7 +388,7 @@
             list-style: none;
             counter-increment: rule-counter;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: none;
             overflow: hidden;
         }
 
@@ -310,7 +407,7 @@
             justify-content: center;
             font-weight: 700;
             font-size: 1.1rem;
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+            box-shadow: none;
         }
 
         .rules-list li:after {
@@ -325,7 +422,7 @@
 
         .rules-list li:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+            box-shadow: none;
             border-color: var(--primary-color);
         }
 
@@ -380,7 +477,7 @@
         }
 
         .highlight {
-            background: linear-gradient(120deg, var(--highlight-bg) 0%, var(--highlight-bg) 100%);
+            /* background: linear-gradient(120deg, var(--highlight-bg) 0%, var(--highlight-bg) 100%); */
             background-repeat: no-repeat;
             background-size: 100% 0.2em;
             background-position: 0 88%;
@@ -448,31 +545,124 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-light);
         }
-	.github-btn {
-    color: white;
-    background-color: #24292e;
-    border: 1px solid #24292e;
-    font-weight: 500;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    display: inline-flex;
-    align-items: center;
-    transition: all 0.2s ease;
-}
 
-.github-btn:hover {
-    background-color: #2f363d !important;
-    border-color: #2f363d !important;
-    text-decoration: none;
-    transform: translateY(-1px);
-}
+        .github-btn {
+            color: white;
+            background-color: #24292e;
+            border: 1px solid #24292e;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
 
+        .github-btn:hover {
+            /* Keep appearance stable on hover */
+            background-color: #24292e;
+            border-color: #24292e;
+            text-decoration: none;
+        }
+
+
+        /* Progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
+            z-index: 1000;
+            transition: width 0.1s linear;
+        }
+
+        /* Selection */
+        ::selection {
+            background: rgba(95, 77, 147, 0.15);
+        }
+
+        /* Dark mode (auto), but do not apply if user chose light */
+        @media (prefers-color-scheme: dark) {
+            html:not([data-theme="light"]) {
+                --text-color: #e5e7eb;
+                /* slate-200 */
+                --text-light: #9ca3af;
+                /* slate-400 */
+                --background: #0b0b10;
+                --surface: rgba(22, 22, 28, 0.7);
+                --surface-light: #101018;
+                --code-bg: #0f172a;
+                /* slate-900 */
+                --border-color: #1f2937;
+                /* slate-800 */
+            }
+
+            html:not([data-theme="light"]) body {
+                background:
+                    radial-gradient(900px 500px at 80% -10%, rgba(95, 77, 147, 0.25), transparent 60%),
+                    radial-gradient(800px 400px at 0% 0%, rgba(227, 118, 130, 0.16), transparent 55%),
+                    linear-gradient(45deg, #0b0b10 0%, #0e1020 60%, #0b0b10 100%);
+            }
+
+            html:not([data-theme="light"]) .container {
+                background: rgba(15, 17, 25, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                box-shadow: none;
+            }
+
+            html:not([data-theme="light"]) .quick-nav a {
+                background: rgba(255, 255, 255, 0.06);
+                color: #e5e7eb;
+                /* improve contrast */
+                border-color: rgba(255, 255, 255, 0.16);
+            }
+
+            html:not([data-theme="light"]) .github-btn {
+                box-shadow: none;
+            }
+        }
+
+        /* Explicit theme overrides (user-chosen) */
+        /* Light uses base variables (no overrides) */
+        html[data-theme="dark"] {
+            --text-color: #e5e7eb;
+            --text-light: #9ca3af;
+            --background: #0b0b10;
+            --surface: rgba(22, 22, 28, 0.7);
+            --surface-light: #101018;
+            --code-bg: #0f172a;
+            --border-color: #1f2937;
+        }
+
+        html[data-theme="dark"] body {
+            background:
+                radial-gradient(900px 500px at 80% -10%, rgba(95, 77, 147, 0.25), transparent 60%),
+                radial-gradient(800px 400px at 0% 0%, rgba(227, 118, 130, 0.16), transparent 55%),
+                linear-gradient(45deg, #0b0b10 0%, #0e1020 60%, #0b0b10 100%);
+        }
+
+        /* Ensure readable nav pills when user explicitly chooses dark */
+        html[data-theme="dark"] .quick-nav a {
+            background: rgba(255, 255, 255, 0.06);
+            color: #e5e7eb;
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        /* Remove code/pre backgrounds to avoid white lines in dark mode */
+        html[data-theme="dark"] pre,
+        html[data-theme="dark"] code,
+        html[data-theme="dark"] pre code {
+            background: transparent !important;
+            border-color: transparent !important;
+        }
+
+        /* Explicit theme overrides (user-chosen, deduped) */
+        /* Light uses base variables (no overrides) */
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            body {
-
-            }
 
             h1 {
                 font-size: 2rem;
@@ -505,22 +695,75 @@
 </head>
 
 <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <div class="container">
         <div class="content-wrapper">
             <header>
-		<p style="text-align:center; margin-bottom:2rem;">
-    		    <img src="{{ '/assets/images/vibe-coder.png' | relative_url }}" alt="Vibe Coder" style="max-width:150px; height:auto; display:block; margin:0 auto;">
-		</p>
+                <p style="text-align:center; margin-bottom:1.25rem;">
+                    <img src="{{ '/assets/images/vibe-coder.png' | relative_url }}" alt="Vibe Coder"
+                        style="max-width:140px; height:auto; display:block; margin:0 auto; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.06));">
+                </p>
                 <h1>{{ site.title }}</h1>
-		<p class="subtitle">{{ site.description }}</p>
+                <p class="subtitle">{{ site.description }}</p>
+                <div class="theme-toggle-icons" role="group" aria-label="Theme toggle">
+                    <button type="button" id="lightModeBtn" aria-pressed="false" title="Light mode"
+                        aria-label="Light mode">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            xmlns="http://www.w3.org/2000/svg" class="size-3">
+                            <g clip-path="url(#clip0_2880_7340)">
+                                <path d="M8 1.11133V2.00022" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M12.8711 3.12891L12.2427 3.75735" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M14.8889 8H14" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M12.8711 12.8711L12.2427 12.2427" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M8 14.8889V14" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M3.12891 12.8711L3.75735 12.2427" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M1.11133 8H2.00022" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M3.12891 3.12891L3.75735 3.75735" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M8.00043 11.7782C10.0868 11.7782 11.7782 10.0868 11.7782 8.00043C11.7782 5.91402 10.0868 4.22266 8.00043 4.22266C5.91402 4.22266 4.22266 5.91402 4.22266 8.00043C4.22266 10.0868 5.91402 11.7782 8.00043 11.7782Z"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2880_7340">
+                                    <rect width="16" height="16" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                    <button type="button" id="darkModeBtn" aria-pressed="false" title="Dark mode"
+                        aria-label="Dark mode">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            xmlns="http://www.w3.org/2000/svg" class="size-3">
+                            <g clip-path="url(#clip0_2880_7355)">
+                                <path
+                                    d="M11.5556 10.4445C8.48717 10.4445 6.00005 7.95743 6.00005 4.88899C6.00005 3.68721 6.38494 2.57877 7.03294 1.66943C4.04272 2.22766 1.77783 4.84721 1.77783 8.0001C1.77783 11.5592 4.66317 14.4445 8.22228 14.4445C11.2196 14.4445 13.7316 12.3948 14.4525 9.62321C13.6081 10.1414 12.6187 10.4445 11.5556 10.4445Z"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2880_7355">
+                                    <rect width="16" height="16" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                </div>
                 <div class="quick-nav">
                     <a href="#introduction">Introduction</a>
                     <a href="#rules-for-ai-assisted-pr-submissions">Rules for PRs</a>
-                    <a href="#project-automation-for-the-ai-codingreview-workflow">Project Automation</a>
-		    <a href="https://github.com/ai-coding-manifesto/ai-coding-manifesto" target="_blank" class="github-btn">
-    			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
-         		style="vertical-align:middle; margin-right:6px;">
-        		    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56
+                    <a href="#project-automation-for-the-vibe-codingreview-workflow">Project Automation</a>
+                    <a href="https://github.com/ai-coding-manifesto/ai-coding-manifesto" target="_blank"
+                        class="github-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            fill="currentColor" style="vertical-align:middle; margin-right:6px;">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56
         		    0-.28-.01-1.03-.02-2.02-3.2.69-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7
         		    -1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27
         		    3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.72
@@ -529,9 +772,9 @@
         		    3.18-1.18 3.18-1.18.63 1.57.23 2.73.11 3.02.74.8 1.19
         		    1.83 1.19 3.09 0 4.45-2.68 5.43-5.24 5.72.42.36.79 1.08.79
         		    2.18 0 1.57-.01 2.83-.01 3.22 0 .31.21.68.8.56A10.999
-        		    10.999 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
-    			</svg>Contribute
-		    </a>
+        		    10.999 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                        </svg>Contribute
+                    </a>
                 </div>
             </header>
 
@@ -540,7 +783,8 @@
             </main>
 
             <footer>
-                <p>The Vibe Coding Manifesto is licensed under <a href="LICENSE" style="color: var(--primary-color);">MIT
+                <p>The Vibe Coding Manifesto is licensed under <a href="LICENSE"
+                        style="color: var(--primary-color);">MIT
                         License</a></p>
             </footer>
         </div>
@@ -565,10 +809,47 @@
 
         // Auto-detect and style the rules section
         document.addEventListener('DOMContentLoaded', function () {
+            // Scroll progress bar
+            const progress = document.querySelector('.scroll-progress');
+            const updateProgress = () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const docHeight = (document.documentElement.scrollHeight - document.documentElement.clientHeight) || 1;
+                const progressWidth = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+                progress.style.width = progressWidth + '%';
+            };
+            updateProgress();
+            window.addEventListener('scroll', updateProgress, { passive: true });
+
+            // Theme toggle
+            const root = document.documentElement;
+            const THEME_KEY = 'vibe-theme';
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const storedTheme = localStorage.getItem(THEME_KEY);
+            const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+            const lightBtn = document.getElementById('lightModeBtn');
+            const darkBtn = document.getElementById('darkModeBtn');
+
+            function applyTheme(theme) {
+                if (!['light', 'dark'].includes(theme)) return;
+                // Set explicit attribute for both, so CSS guards can detect user choice
+                root.setAttribute('data-theme', theme);
+                if (lightBtn && darkBtn) {
+                    lightBtn.setAttribute('aria-pressed', String(theme === 'light'));
+                    darkBtn.setAttribute('aria-pressed', String(theme === 'dark'));
+                }
+                try { localStorage.setItem(THEME_KEY, theme); } catch (_) { }
+            }
+
+            applyTheme(initialTheme);
+
+            lightBtn && lightBtn.addEventListener('click', () => applyTheme('light'));
+            darkBtn && darkBtn.addEventListener('click', () => applyTheme('dark'));
+
             // Find the rules section and add special styling
             const headings = document.querySelectorAll('h1, h2');
             headings.forEach(heading => {
-                if (heading.textContent.includes('Rules for AI-Assisted PR Submissions')) {
+                const text = heading.textContent.trim();
+                if (text.includes('Rules for AI-Assisted PR Submissions')) {
                     heading.setAttribute('id', 'rules-for-ai-assisted-pr-submissions');
 
                     // Find the ul that follows this heading
@@ -580,6 +861,10 @@
                         }
                         sibling = sibling.nextElementSibling;
                     }
+                }
+
+                if (text.includes('Project automation for the Vibe Coding/Review Workflow')) {
+                    heading.setAttribute('id', 'project-automation-for-the-vibe-codingreview-workflow');
                 }
             });
         });
