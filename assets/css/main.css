@@ -615,6 +615,8 @@ footer {
         --surface-light: #101018;
         --code-bg: #0f172a; /* slate-900 */
         --border-color: #1f2937; /* slate-800 */
+        /* Increased contrast for links/headlines in dark theme */
+        --primary-color: #c0b5ff;
     }
 
     html:not([data-theme="light"]) body {
@@ -651,6 +653,8 @@ html[data-theme="dark"] {
     --surface-light: #101018;
     --code-bg: #0f172a;
     --border-color: #1f2937;
+    /* Increased contrast for links/headlines in explicit dark theme */
+    --primary-color: #c0b5ff;
 }
 
 html[data-theme="dark"] body {
